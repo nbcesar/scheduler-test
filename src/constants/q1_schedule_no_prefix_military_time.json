@@ -1,0 +1,2310 @@
+[
+  {
+    "Combo":"A1",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (F)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Monday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Wednesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Thursday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A1",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (F)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Monday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Wednesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Thursday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A2",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (B)"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Monday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Wednesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Monday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Wednesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A3",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Monday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Wednesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Monday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Wednesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A4",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (B)"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Monday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Wednesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Monday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Wednesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A5",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (F)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Monday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Wednesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Thursday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A6",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Monday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Wednesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Monday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Wednesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A7",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Tuesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Monday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Wednesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Monday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Wednesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A8",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (B)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (F)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Thursday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Thursday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Monday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Wednesday",
+    "Start Time":"11:00",
+    "End Time":"12:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (C)"
+  },
+  {
+    "Combo":"A9",
+    "Day":"Tuesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (C)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Wednesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (F)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Tuesday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Thursday",
+    "Start Time":"12:00",
+    "End Time":"13:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Thursday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (D)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Monday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Wednesday",
+    "Start Time":"09:00",
+    "End Time":"10:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"A10",
+    "Day":"Tuesday",
+    "Start Time":"10:00",
+    "End Time":"11:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (D)"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Thursday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B1",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (C)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Monday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B2",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Thursday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B3",
+    "Day":"Wednesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Thursday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B4",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Thursday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B5",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Thursday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Wednesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (E)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B6",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (A)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Thursday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B7",
+    "Day":"Wednesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (A)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B8",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (A)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Thursday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B9",
+    "Day":"Monday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (E)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Thursday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B10",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (E)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Thursday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B11",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (E)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Thursday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (B)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B12",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (E)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (A)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B13",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (C)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Monday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B14",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (C)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Monday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B15",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (C)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Wednesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (F)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Monday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B16",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Wednesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B17",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (D)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (A)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B18",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (C)",
+    "Foundations": "TRUE"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (C)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (A)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (A)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Monday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Wednesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B19",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (A)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Tuesday",
+    "Start Time":"19:00",
+    "End Time":"20:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (A)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Monday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Wednesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Tuesday",
+    "Start Time":"20:00",
+    "End Time":"21:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (G)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Tuesday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Thursday",
+    "Start Time":"18:00",
+    "End Time":"19:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"B20",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (F)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (H)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Monday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Wednesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C1",
+    "Day":"Tuesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (H)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Tuesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Monday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Wednesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C2",
+    "Day":"Wednesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (H)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Monday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Wednesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C3",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (H)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Thursday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Monday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Wednesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C4",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (H)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Wednesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (I)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Monday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Wednesday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C5",
+    "Day":"Thursday",
+    "Start Time":"23:00",
+    "End Time":"00:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (J)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (G)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C6",
+    "Day":"Wednesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (G)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Tuesday",
+    "Start Time":"00:00",
+    "End Time":"01:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C7",
+    "Day":"Monday",
+    "Start Time":"00:00",
+    "End Time":"01:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (G)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Wednesday",
+    "Start Time":"00:00",
+    "End Time":"01:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C8",
+    "Day":"Wednesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (G)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Monday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C9",
+    "Day":"Thursday",
+    "Start Time":"00:00",
+    "End Time":"01:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Monday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Purpose Driven Life (G)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Tuesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Thursday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Lecture",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Wednesday",
+    "Start Time":"22:00",
+    "End Time":"23:00",
+    "Type":"Discussion",
+    "Course Name":"Introduction to Business (H)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Tuesday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Thursday",
+    "Start Time":"21:00",
+    "End Time":"22:00",
+    "Type":"Lecture",
+    "Course Name":"English Composition (I)"
+  },
+  {
+    "Combo":"C10",
+    "Day":"Monday",
+    "Start Time":"00:00",
+    "End Time":"01:00",
+    "Type":"Discussion",
+    "Course Name":"English Composition (I)"
+  }
+]
