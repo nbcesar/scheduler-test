@@ -41,6 +41,7 @@ export function StudentSchedule() {
   const [availability, setAvailability] = useState<TimeAvailability>({});
   const scheduleRef = useRef<HTMLDivElement>(null);
   const [isChangeRequestOpen, setIsChangeRequestOpen] = useState(false);
+  const [classSearchTerm, setClassSearchTerm] = useState<string>('');
 
   const classList = classListData as ClassEntry[];
   const transcripts = transcriptsData as TranscriptEntry[];
@@ -290,13 +291,24 @@ export function StudentSchedule() {
       available.push(classEntry);
     });
 
+    // Filter available classes by search term
+    const filteredAvailableClasses = available.filter(classEntry => {
+      if (!classSearchTerm.trim()) return true;
+      
+      const searchLower = classSearchTerm.toLowerCase();
+      const courseName = classEntry["Course Name"].toLowerCase();
+      const courseCode = classEntry["Course Code"].toLowerCase();
+      
+      return courseName.includes(searchLower) || courseCode.includes(searchLower);
+    });
+
     return {
-      availableClasses: available,
+      availableClasses: filteredAvailableClasses,
       conflictingClasses: conflicting,
       takenClasses: Array.from(takenCoursesMap.values()),
       transcriptOnlyClasses: Array.from(transcriptOnlyCoursesMap.values())
     };
-  }, [selectedStudent, classList, studentTranscripts, selectedClasses, scheduledClasses, availability]);
+  }, [selectedStudent, classList, studentTranscripts, selectedClasses, scheduledClasses, availability, classSearchTerm]);
 
   const handleSelectClass = (classEntry: ClassEntry) => {
     const newSelectedClass: SelectedClass = {
@@ -323,6 +335,7 @@ export function StudentSchedule() {
     setSelectedClasses([]); // Clear manually selected classes
     setScheduledClasses([]); // Clear scheduled classes
     setAvailability({}); // Clear availability when changing students
+    setClassSearchTerm(''); // Clear search term when changing students
     
     // Load scheduled classes for the selected student
     if (student) {
@@ -588,7 +601,33 @@ export function StudentSchedule() {
                 <div className="px-2 py-3 bg-gray-50 border-b border-gray-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-700">Available Classes</span>
+                      <span className="text-sm font-medium text-gray-700">
+                        Available Classes
+                        {classSearchTerm && (
+                          <span className="text-xs text-gray-500 ml-1">
+                            ({availableClasses.length} found)
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="Search classes..."
+                          value={classSearchTerm}
+                          onChange={(e) => setClassSearchTerm(e.target.value)}
+                          className="w-48 px-3 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                        />
+                        {classSearchTerm && (
+                          <button
+                            onClick={() => setClassSearchTerm('')}
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
