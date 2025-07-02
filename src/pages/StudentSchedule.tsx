@@ -34,15 +34,26 @@ interface StudentEntry {
   rn: string;
 }
 
+// Add type for schedule conflicts
+interface ScheduleConflict {
+  class1: ClassEntry;
+  class2: ClassEntry;
+  conflictType: 'lecture' | 'discussion' | 'lecture-discussion';
+  day: string;
+  time: string;
+}
+
 export function StudentSchedule() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<SelectedClass[]>([]);
   const [scheduledClasses, setScheduledClasses] = useState<SelectedClass[]>([]);
   const [timezone, setTimezone] = useState<Timezone>('Eastern');
   const [availability, setAvailability] = useState<TimeAvailability>({});
+  const [classSearchTerm, setClassSearchTerm] = useState<string>('');
+  const [scheduleConflicts, setScheduleConflicts] = useState<ScheduleConflict[]>([]);
+  const [isScheduleValid, setIsScheduleValid] = useState<boolean>(true);
   const scheduleRef = useRef<HTMLDivElement>(null);
   const [isChangeRequestOpen, setIsChangeRequestOpen] = useState(false);
-  const [classSearchTerm, setClassSearchTerm] = useState<string>('');
 
   const classList = classListData as ClassEntry[];
   const transcripts = transcriptsData as TranscriptEntry[];
@@ -86,7 +97,200 @@ export function StudentSchedule() {
     return transcripts.filter(entry => entry.student_id === selectedStudent.id);
   }, [selectedStudent, transcripts]);
 
-  // Move these functions inside the useMemo to avoid dependency issues
+  // Check if two time ranges conflict
+  const timeRangesConflict = (time1: string, time2: string): boolean => {
+    if (!time1 || !time2) return false;
+    
+    const parseTime = (timeRange: string) => {
+      const [start, end] = timeRange.split(' - ');
+      const parseHour = (time: string) => {
+        const [hour, minute] = time.split(':').map(Number);
+        return hour * 60 + minute;
+      };
+      return {
+        start: parseHour(start),
+        end: parseHour(end)
+      };
+    };
+
+    const range1 = parseTime(time1);
+    const range2 = parseTime(time2);
+
+    return range1.start < range2.end && range2.start < range1.end;
+  };
+
+  // Function to detect conflicts within scheduled classes
+  const detectScheduledConflicts = (classes: SelectedClass[]): ScheduleConflict[] => {
+    const conflicts: ScheduleConflict[] = [];
+
+    for (let i = 0; i < classes.length; i++) {
+      for (let j = i + 1; j < classes.length; j++) {
+        const class1 = classes[i].class;
+        const class2 = classes[j].class;
+
+        // Check lecture conflicts
+        const lectureDays1 = [class1["Lecture Day 1"], class1["Lecture Day 2"]].filter(Boolean);
+        const lectureDays2 = [class2["Lecture Day 1"], class2["Lecture Day 2"]].filter(Boolean);
+        
+        const lectureConflict = lectureDays1.some(day1 => 
+          lectureDays2.some(day2 => 
+            day1 === day2 && timeRangesConflict(class1["Lecture Time"], class2["Lecture Time"])
+          )
+        );
+
+        if (lectureConflict) {
+          const conflictingDay = lectureDays1.find(day1 => 
+            lectureDays2.some(day2 => 
+              day1 === day2 && timeRangesConflict(class1["Lecture Time"], class2["Lecture Time"])
+            )
+          );
+          conflicts.push({
+            class1,
+            class2,
+            conflictType: 'lecture',
+            day: conflictingDay || '',
+            time: class1["Lecture Time"]
+          });
+        }
+
+        // Check discussion section conflicts
+        const dsConflict = class1["DS Day"] && class2["DS Day"] &&
+          class1["DS Day"] === class2["DS Day"] &&
+          timeRangesConflict(class1["DS Time"] || '', class2["DS Time"] || '');
+
+        if (dsConflict) {
+          conflicts.push({
+            class1,
+            class2,
+            conflictType: 'discussion',
+            day: class1["DS Day"] || '',
+            time: class1["DS Time"] || ''
+          });
+        }
+
+        // Check lecture vs DS conflicts
+        const lectureDsConflict = lectureDays1.some(lectureDay =>
+          class2["DS Day"] === lectureDay &&
+          timeRangesConflict(class1["Lecture Time"], class2["DS Time"] || '')
+        ) || (class1["DS Day"] && lectureDays2.some(lectureDay =>
+          class1["DS Day"] === lectureDay &&
+          timeRangesConflict(class1["DS Time"] || '', class2["Lecture Time"])
+        ));
+
+        if (lectureDsConflict) {
+          conflicts.push({
+            class1,
+            class2,
+            conflictType: 'lecture-discussion',
+            day: class1["DS Day"] || class2["DS Day"] || '',
+            time: class1["DS Time"] || class2["Lecture Time"] || ''
+          });
+        }
+      }
+    }
+
+    return conflicts;
+  };
+
+  // Check if student has passed or is taking a course
+  const isCourseTakenOrInProgress = (courseCode: string): { taken: boolean; grade?: string; status?: string } => {
+    const courseEntry = studentTranscripts.find(entry => entry.course_code === courseCode);
+    if (!courseEntry) return { taken: false };
+    
+    const passingGrades = ['A', 'B', 'C'];
+    const isPassed = passingGrades.includes(courseEntry.grade);
+    const isInProgress = courseEntry.grade === 'IP';
+    
+    return {
+      taken: isPassed || isInProgress,
+      grade: courseEntry.grade,
+      status: isInProgress ? 'In Progress' : isPassed ? 'Passed' : 'Failed'
+    };
+  };
+
+  // Check if a class time slot is available based on user selection
+  const isClassTimeAvailable = (classEntry: ClassEntry): boolean => {
+    // If no availability is set, show all classes
+    if (Object.keys(availability).length === 0) {
+      return true;
+    }
+
+    // Check lecture time availability
+    const lectureDays = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
+    const lectureTime = classEntry["Lecture Time"];
+    
+    if (lectureTime) {
+      const [startTime, endTime] = lectureTime.split(' - ');
+      const lectureAvailable = lectureDays.every(day => {
+        // Find matching time slot in availability
+        const timeSlotKey = Object.keys(availability).find(key => {
+          const [keyStart, keyEnd] = key.split('-').slice(-2); // Get last two parts (start-end)
+          return keyStart === startTime && keyEnd === endTime;
+        });
+        
+        return timeSlotKey && availability[timeSlotKey]?.[day as keyof TimeAvailability];
+      });
+      
+      if (!lectureAvailable) return false;
+    }
+
+    // Check discussion section time availability
+    if (classEntry["DS Day"] && classEntry["DS Time"]) {
+      const dsDay = classEntry["DS Day"];
+      const dsTime = classEntry["DS Time"];
+      const [dsStartTime, dsEndTime] = dsTime.split(' - ');
+      
+      const dsTimeSlotKey = Object.keys(availability).find(key => {
+        const [keyStart, keyEnd] = key.split('-').slice(-2);
+        return keyStart === dsStartTime && keyEnd === dsEndTime;
+      });
+      
+      if (!dsTimeSlotKey || !availability[dsTimeSlotKey]?.[dsDay]) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  // Check if a class conflicts with selected classes
+  const hasConflict = (classEntry: ClassEntry): boolean => {
+    const allClasses = [...selectedClasses, ...scheduledClasses];
+    return allClasses.some(selected => {
+      // Check lecture conflicts
+      const lectureDays1 = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
+      const lectureDays2 = [selected.class["Lecture Day 1"], selected.class["Lecture Day 2"]].filter(Boolean);
+      
+      const lectureConflict = lectureDays1.some(day1 => 
+        lectureDays2.some(day2 => 
+          day1 === day2 && timeRangesConflict(classEntry["Lecture Time"], selected.class["Lecture Time"])
+        )
+      );
+
+      // Check discussion section conflicts
+      const dsConflict = classEntry["DS Day"] && selected.class["DS Day"] &&
+        classEntry["DS Day"] === selected.class["DS Day"] &&
+        timeRangesConflict(classEntry["DS Time"] || '', selected.class["DS Time"] || '');
+
+      // Check lecture vs DS conflicts
+      const lectureDsConflict = lectureDays1.some(lectureDay =>
+        selected.class["DS Day"] === lectureDay &&
+        timeRangesConflict(classEntry["Lecture Time"], selected.class["DS Time"] || '')
+      ) || (classEntry["DS Day"] && lectureDays2.some(lectureDay =>
+        classEntry["DS Day"] === lectureDay &&
+        timeRangesConflict(classEntry["DS Time"] || '', selected.class["Lecture Time"])
+      ));
+
+      return lectureConflict || dsConflict || lectureDsConflict;
+    });
+  };
+
+  // Check if a class has the same course code as any selected class
+  const hasSameCourseCode = (classEntry: ClassEntry): boolean => {
+    const allClasses = [...selectedClasses, ...scheduledClasses];
+    return allClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
+  };
+
   const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses } = useMemo(() => {
     if (!selectedStudent) {
       return { availableClasses: [], conflictingClasses: [], takenClasses: [], transcriptOnlyClasses: [] };
@@ -340,6 +544,8 @@ export function StudentSchedule() {
     setScheduledClasses([]); // Clear scheduled classes
     setAvailability({}); // Clear availability when changing students
     setClassSearchTerm(''); // Clear search term when changing students
+    setScheduleConflicts([]); // Clear previous conflicts
+    setIsScheduleValid(true); // Reset schedule validity
     
     // Load scheduled classes for the selected student
     if (student) {
@@ -362,6 +568,11 @@ export function StudentSchedule() {
       }).filter(Boolean) as SelectedClass[];
       
       setScheduledClasses(scheduled);
+      
+      // Detect conflicts in the scheduled classes
+      const conflicts = detectScheduledConflicts(scheduled);
+      setScheduleConflicts(conflicts);
+      setIsScheduleValid(conflicts.length === 0);
     }
   };
 
@@ -390,6 +601,11 @@ export function StudentSchedule() {
       }).filter(Boolean) as SelectedClass[];
       
       setScheduledClasses(scheduled);
+      
+      // Re-check for conflicts
+      const conflicts = detectScheduledConflicts(scheduled);
+      setScheduleConflicts(conflicts);
+      setIsScheduleValid(conflicts.length === 0);
     }
   };
 
@@ -472,36 +688,70 @@ export function StudentSchedule() {
           />
         </div>
 
-        {/* {selectedStudent && (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <User className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-semibold text-gray-900">{selectedStudent.name}</h2>
-                <p className="text-sm text-gray-600">{selectedStudent.email}</p>
-                <div className="flex items-center gap-4 mt-1">
-                  {selectedStudent.coachName && (
-                    <span className="text-xs text-gray-500">
-                      <span className="font-medium">Coach:</span> {selectedStudent.coachName}
-                    </span>
-                  )}
-                  {selectedStudent.termStatus && selectedStudent.termNumber && (
-                    <span className="text-xs text-gray-500">
-                      <span className="font-medium">Term {selectedStudent.termNumber}</span> • {selectedStudent.termStatus}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )} */}
-
         {selectedStudent ? (
           <div className="space-y-6">
+            {/* Schedule Conflict Warning */}
+            {!isScheduleValid && scheduleConflicts.length > 0 && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center">
+                    <span className="text-red-600 text-xs font-bold">!</span>
+                  </div>
+                  <h3 className="text-red-900 font-semibold">Schedule Conflicts Detected</h3>
+                </div>
+                <p className="text-red-700 text-sm mb-3">
+                  The student's scheduled classes have {scheduleConflicts.length} conflict{scheduleConflicts.length !== 1 ? 's' : ''}. 
+                  Please review and resolve these conflicts before proceeding.
+                </p>
+                <div className="space-y-2">
+                  {scheduleConflicts.map((conflict, index) => (
+                    <div key={index} className="bg-red-100 p-3 rounded border border-red-200">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                          conflict.conflictType === 'lecture' ? 'bg-red-200 text-red-800' :
+                          conflict.conflictType === 'discussion' ? 'bg-orange-200 text-orange-800' :
+                          'bg-yellow-200 text-yellow-800'
+                        }`}>
+                          {conflict.conflictType.toUpperCase()}
+                        </span>
+                        <span className="text-sm font-medium text-red-900">
+                          {conflict.day} at {conflict.time}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                        <div className="bg-white p-2 rounded">
+                          <span className="font-medium text-red-900">{conflict.class1["Course Name"]}</span>
+                          <div className="text-xs text-red-700">Section {conflict.class1["Section Code"]}</div>
+                        </div>
+                        <div className="bg-white p-2 rounded">
+                          <span className="font-medium text-red-900">{conflict.class2["Course Name"]}</span>
+                          <div className="text-xs text-red-700">Section {conflict.class2["Section Code"]}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 flex gap-2">
+                  <button
+                    onClick={() => {
+                      // Option to remove all conflicting classes
+                      const conflictingClassIds = new Set();
+                      scheduleConflicts.forEach(conflict => {
+                        conflictingClassIds.add(`${conflict.class1["Course Code"]}-${conflict.class1["Section Code"]}`);
+                        conflictingClassIds.add(`${conflict.class2["Course Code"]}-${conflict.class2["Section Code"]}`);
+                      });
+                      setScheduledClasses(prev => prev.filter(c => !conflictingClassIds.has(c.id)));
+                      setScheduleConflicts([]);
+                      setIsScheduleValid(true);
+                    }}
+                    className="px-3 py-1 text-xs font-medium text-red-700 bg-red-100 border border-red-300 rounded hover:bg-red-200"
+                  >
+                    Remove All Conflicting Classes
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Schedule Grid - Full Width */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200">
               <div className="px-2 py-3 bg-gray-50 border-b border-gray-200">
