@@ -29,6 +29,9 @@ export interface Student {
   id: string;
   name: string;
   email: string;
+  coachName?: string;
+  termStatus?: string;
+  termNumber?: string;
 }
 
 export type Timezone = 'Eastern' | 'Central' | 'Mountain' | 'Pacific';

@@ -24,7 +24,8 @@ export function StudentSelector({ students, selectedStudent, onStudentChange, ti
     } else {
       const filtered = students.filter(student => 
         student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        student.email.toLowerCase().includes(searchTerm.toLowerCase())
+        student.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (student.coachName && student.coachName.toLowerCase().includes(searchTerm.toLowerCase()))
       );
       setFilteredStudents(filtered);
     }
@@ -94,7 +95,20 @@ export function StudentSelector({ students, selectedStudent, onStudentChange, ti
               >
                 {selectedStudent ? (
                   <div className="flex items-center justify-between">
-                    <span>{selectedStudent.name} ({selectedStudent.email})</span>
+                    <div className="flex-1">
+                      <div className="font-medium text-gray-900">{selectedStudent.name}</div>
+                      <div className="text-sm text-gray-600">{selectedStudent.email}</div>
+                      {selectedStudent.coachName && (
+                        <div className="text-xs text-gray-500">
+                          Coach: {selectedStudent.coachName}
+                        </div>
+                      )}
+                      {selectedStudent.termStatus && selectedStudent.termNumber && (
+                        <div className="text-xs text-gray-500">
+                          Term {selectedStudent.termNumber} • {selectedStudent.termStatus}
+                        </div>
+                      )}
+                    </div>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -109,7 +123,7 @@ export function StudentSelector({ students, selectedStudent, onStudentChange, ti
                   <input
                     ref={inputRef}
                     type="text"
-                    placeholder="Search by name or email..."
+                    placeholder="Search by name, email, or coach..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyDown}
@@ -138,6 +152,16 @@ export function StudentSelector({ students, selectedStudent, onStudentChange, ti
                       >
                         <div className="font-medium text-gray-900">{student.name}</div>
                         <div className="text-sm text-gray-600">{student.email}</div>
+                        {student.coachName && (
+                          <div className="text-xs text-gray-500">
+                            Coach: {student.coachName}
+                          </div>
+                        )}
+                        {student.termStatus && student.termNumber && (
+                          <div className="text-xs text-gray-500">
+                            Term {student.termNumber} • {student.termStatus}
+                          </div>
+                        )}
                       </button>
                     ))}
                   </div>

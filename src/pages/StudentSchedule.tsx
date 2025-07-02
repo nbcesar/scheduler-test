@@ -30,6 +30,7 @@ interface StudentEntry {
   email: string;
   coach_name: string;
   term_status_classification: string;
+  term_number: string;
   rn: string;
 }
 
@@ -65,7 +66,10 @@ export function StudentSchedule() {
       .map(student => ({
         id: student.user_id.trim(),
         name: student.student_name.trim(),
-        email: student.email.trim()
+        email: student.email.trim(),
+        coachName: student.coach_name,
+        termStatus: student.term_status_classification,
+        termNumber: student.term_number
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [students]);
@@ -467,6 +471,34 @@ export function StudentSchedule() {
             onTimezoneChange={setTimezone}
           />
         </div>
+
+        {/* {selectedStudent && (
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                  <User className="w-6 h-6 text-purple-600" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h2 className="text-lg font-semibold text-gray-900">{selectedStudent.name}</h2>
+                <p className="text-sm text-gray-600">{selectedStudent.email}</p>
+                <div className="flex items-center gap-4 mt-1">
+                  {selectedStudent.coachName && (
+                    <span className="text-xs text-gray-500">
+                      <span className="font-medium">Coach:</span> {selectedStudent.coachName}
+                    </span>
+                  )}
+                  {selectedStudent.termStatus && selectedStudent.termNumber && (
+                    <span className="text-xs text-gray-500">
+                      <span className="font-medium">Term {selectedStudent.termNumber}</span> • {selectedStudent.termStatus}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )} */}
 
         {selectedStudent ? (
           <div className="space-y-6">
