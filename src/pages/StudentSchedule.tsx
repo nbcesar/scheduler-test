@@ -81,131 +81,123 @@ export function StudentSchedule() {
     return transcripts.filter(entry => entry.student_id === selectedStudent.id);
   }, [selectedStudent, transcripts]);
 
-  // Check if student has passed or is taking a course
-  const isCourseTakenOrInProgress = (courseCode: string): { taken: boolean; grade?: string; status?: string } => {
-    const courseEntry = studentTranscripts.find(entry => entry.course_code === courseCode);
-    if (!courseEntry) return { taken: false };
-    
-    const passingGrades = ['A', 'B', 'C'];
-    const isPassed = passingGrades.includes(courseEntry.grade);
-    const isInProgress = courseEntry.grade === 'IP';
-    
-    return {
-      taken: isPassed || isInProgress,
-      grade: courseEntry.grade,
-      status: isInProgress ? 'In Progress' : isPassed ? 'Passed' : 'Failed'
-    };
-  };
-
-  // Check if a class time slot is available based on user selection
-  const isClassTimeAvailable = (classEntry: ClassEntry): boolean => {
-    // If no availability is set, show all classes
-    if (Object.keys(availability).length === 0) {
-      return true;
-    }
-
-    // Check lecture time availability
-    const lectureDays = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
-    const lectureTime = classEntry["Lecture Time"];
-    
-    if (lectureTime) {
-      const [startTime, endTime] = lectureTime.split(' - ');
-      const lectureAvailable = lectureDays.every(day => {
-        // Find matching time slot in availability
-        const timeSlotKey = Object.keys(availability).find(key => {
-          const [keyStart, keyEnd] = key.split('-').slice(-2); // Get last two parts (start-end)
-          return keyStart === startTime && keyEnd === endTime;
-        });
-        
-        return timeSlotKey && availability[timeSlotKey]?.[day as keyof TimeAvailability];
-      });
-      
-      if (!lectureAvailable) return false;
-    }
-
-    // Check discussion section time availability
-    if (classEntry["DS Day"] && classEntry["DS Time"]) {
-      const dsDay = classEntry["DS Day"];
-      const dsTime = classEntry["DS Time"];
-      const [dsStartTime, dsEndTime] = dsTime.split(' - ');
-      
-      const dsTimeSlotKey = Object.keys(availability).find(key => {
-        const [keyStart, keyEnd] = key.split('-').slice(-2);
-        return keyStart === dsStartTime && keyEnd === dsEndTime;
-      });
-      
-      if (!dsTimeSlotKey || !availability[dsTimeSlotKey]?.[dsDay]) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  // Check if two time ranges conflict
-  const timeRangesConflict = (time1: string, time2: string): boolean => {
-    if (!time1 || !time2) return false;
-    
-    const parseTime = (timeRange: string) => {
-      const [start, end] = timeRange.split(' - ');
-      const parseHour = (time: string) => {
-        const [hour, minute] = time.split(':').map(Number);
-        return hour * 60 + minute;
-      };
-      return {
-        start: parseHour(start),
-        end: parseHour(end)
-      };
-    };
-
-    const range1 = parseTime(time1);
-    const range2 = parseTime(time2);
-
-    return range1.start < range2.end && range2.start < range1.end;
-  };
-
-  // Check if a class conflicts with selected classes
-  const hasConflict = (classEntry: ClassEntry): boolean => {
-    const allClasses = [...selectedClasses, ...scheduledClasses];
-    return allClasses.some(selected => {
-      // Check lecture conflicts
-      const lectureDays1 = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
-      const lectureDays2 = [selected.class["Lecture Day 1"], selected.class["Lecture Day 2"]].filter(Boolean);
-      
-      const lectureConflict = lectureDays1.some(day1 => 
-        lectureDays2.some(day2 => 
-          day1 === day2 && timeRangesConflict(classEntry["Lecture Time"], selected.class["Lecture Time"])
-        )
-      );
-
-      // Check discussion section conflicts
-      const dsConflict = classEntry["DS Day"] && selected.class["DS Day"] &&
-        classEntry["DS Day"] === selected.class["DS Day"] &&
-        timeRangesConflict(classEntry["DS Time"] || '', selected.class["DS Time"] || '');
-
-      // Check lecture vs DS conflicts
-      const lectureDsConflict = lectureDays1.some(lectureDay =>
-        selected.class["DS Day"] === lectureDay &&
-        timeRangesConflict(classEntry["Lecture Time"], selected.class["DS Time"] || '')
-      ) || (classEntry["DS Day"] && lectureDays2.some(lectureDay =>
-        classEntry["DS Day"] === lectureDay &&
-        timeRangesConflict(classEntry["DS Time"] || '', selected.class["Lecture Time"])
-      ));
-
-      return lectureConflict || dsConflict || lectureDsConflict;
-    });
-  };
-
-  // Check if a class has the same course code as any selected class
-  const hasSameCourseCode = (classEntry: ClassEntry): boolean => {
-    const allClasses = [...selectedClasses, ...scheduledClasses];
-    return allClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
-  };
-
+  // Move these functions inside the useMemo to avoid dependency issues
   const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses } = useMemo(() => {
     if (!selectedStudent) {
       return { availableClasses: [], conflictingClasses: [], takenClasses: [], transcriptOnlyClasses: [] };
     }
+
+    // Helper functions defined inside useMemo to avoid dependency issues
+    const isCourseTakenOrInProgress = (courseCode: string): { taken: boolean; grade?: string; status?: string } => {
+      const courseEntry = studentTranscripts.find(entry => entry.course_code === courseCode);
+      if (!courseEntry) return { taken: false };
+      
+      const passingGrades = ['A', 'B', 'C'];
+      const isPassed = passingGrades.includes(courseEntry.grade);
+      const isInProgress = courseEntry.grade === 'IP';
+      
+      return {
+        taken: isPassed || isInProgress,
+        grade: courseEntry.grade,
+        status: isInProgress ? 'In Progress' : isPassed ? 'Passed' : 'Failed'
+      };
+    };
+
+    const isClassTimeAvailable = (classEntry: ClassEntry): boolean => {
+      // If no availability is set, show all classes
+      if (Object.keys(availability).length === 0) {
+        return true;
+      }
+
+      // Check lecture time availability
+      const lectureDays = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
+      const lectureTime = classEntry["Lecture Time"];
+      
+      if (lectureTime) {
+        const [startTime, endTime] = lectureTime.split(' - ');
+        const lectureAvailable = lectureDays.every(day => {
+          // Find matching time slot in availability
+          const timeSlotKey = Object.keys(availability).find(key => {
+            const [keyStart, keyEnd] = key.split('-').slice(-2); // Get last two parts (start-end)
+            return keyStart === startTime && keyEnd === endTime;
+          });
+          
+          return timeSlotKey && availability[timeSlotKey]?.[day as keyof TimeAvailability];
+        });
+        
+        if (!lectureAvailable) return false;
+      }
+
+      // Check discussion section time availability
+      if (classEntry["DS Day"] && classEntry["DS Time"]) {
+        const dsDay = classEntry["DS Day"];
+        const dsTime = classEntry["DS Time"];
+        const [dsStartTime, dsEndTime] = dsTime.split(' - ');
+        
+        const dsTimeSlotKey = Object.keys(availability).find(key => {
+          const [keyStart, keyEnd] = key.split('-').slice(-2);
+          return keyStart === dsStartTime && keyEnd === dsEndTime;
+        });
+        
+        if (!dsTimeSlotKey || !availability[dsTimeSlotKey]?.[dsDay]) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    const timeRangesConflict = (time1: string, time2: string): boolean => {
+      if (!time1 || !time2) return false;
+      
+      const parseTime = (timeRange: string) => {
+        const [start, end] = timeRange.split(' - ');
+        const parseHour = (time: string) => {
+          const [hour, minute] = time.split(':').map(Number);
+          return hour * 60 + minute;
+        };
+        return {
+          start: parseHour(start),
+          end: parseHour(end)
+        };
+      };
+
+      const range1 = parseTime(time1);
+      const range2 = parseTime(time2);
+
+      return range1.start < range2.end && range2.start < range1.end;
+    };
+
+    const hasConflict = (classEntry: ClassEntry): boolean => {
+      const allClasses = [...selectedClasses, ...scheduledClasses];
+      return allClasses.some(selected => {
+        // Check lecture conflicts
+        const lectureDays1 = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
+        const lectureDays2 = [selected.class["Lecture Day 1"], selected.class["Lecture Day 2"]].filter(Boolean);
+        
+        const lectureConflict = lectureDays1.some(day1 => 
+          lectureDays2.some(day2 => 
+            day1 === day2 && timeRangesConflict(classEntry["Lecture Time"], selected.class["Lecture Time"])
+          )
+        );
+
+        // Check discussion section conflicts
+        const dsConflict = classEntry["DS Day"] && selected.class["DS Day"] &&
+          classEntry["DS Day"] === selected.class["DS Day"] &&
+          timeRangesConflict(classEntry["DS Time"] || '', selected.class["DS Time"] || '');
+
+        // Check lecture vs DS conflicts
+        const lectureDsConflict = lectureDays1.some(lectureDay =>
+          selected.class["DS Day"] === lectureDay &&
+          timeRangesConflict(classEntry["Lecture Time"], selected.class["DS Time"] || '')
+        ) || (classEntry["DS Day"] && lectureDays2.some(lectureDay =>
+          classEntry["DS Day"] === lectureDay &&
+          timeRangesConflict(classEntry["DS Time"] || '', selected.class["Lecture Time"])
+        ));
+
+        return lectureConflict || dsConflict || lectureDsConflict;
+      });
+    };
 
     const available: ClassEntry[] = [];
     const conflicting: ClassEntry[] = [];
@@ -254,9 +246,17 @@ export function StudentSchedule() {
       }
     });
 
+    // Get all currently selected classes (both scheduled and manually selected)
+    const allSelectedClasses = [...selectedClasses, ...scheduledClasses];
+    
+    // Create sets for quick lookup
+    const selectedCourseCodes = new Set(allSelectedClasses.map(c => c.class["Course Code"]));
+    const selectedClassIds = new Set(allSelectedClasses.map(c => c.id));
+
     // Process all classes in the class list
     classList.forEach(classEntry => {
       const courseCode = classEntry["Course Code"];
+      const classId = `${classEntry["Course Code"]}-${classEntry["Section Code"]}`;
       const courseStatus = isCourseTakenOrInProgress(courseCode);
       
       // Skip if course is already taken
@@ -269,6 +269,11 @@ export function StudentSchedule() {
         return;
       }
       
+      // Skip if this exact class is already selected
+      if (selectedClassIds.has(classId)) {
+        return;
+      }
+      
       // Check for conflicts with selected classes
       if (hasConflict(classEntry)) {
         conflicting.push(classEntry);
@@ -276,7 +281,7 @@ export function StudentSchedule() {
       }
       
       // Check if same course code is already selected
-      if (hasSameCourseCode(classEntry)) {
+      if (selectedCourseCodes.has(courseCode)) {
         conflicting.push(classEntry);
         return;
       }
