@@ -13,6 +13,14 @@ import { StudentTranscript } from '../components/StudentTranscript';
 import html2canvas from 'html2canvas';
 import { ScheduleScreenshot } from '../components/ScheduleScreenshot';
 import { ScheduleChangeRequest } from '../components/ScheduleChangeRequest';
+import summerSchedulesData from '../constants/summer_schedules.json';
+
+interface SummerScheduleEntry {
+  student_id: string;
+  section_code: string;
+}
+
+const summerSchedules = summerSchedulesData as SummerScheduleEntry[];
 
 export function StudentSchedule() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
@@ -21,6 +29,7 @@ export function StudentSchedule() {
   const [availability, setAvailability] = useState<TimeAvailability>({});
   const scheduleRef = useRef<HTMLDivElement>(null);
   const [isChangeRequestOpen, setIsChangeRequestOpen] = useState(false);
+  const [scheduledClasses, setScheduledClasses] = useState<SelectedClass[]>([]);
 
   const classList = classListData as ClassEntry[];
   const transcripts = transcriptsData as TranscriptEntry[];
@@ -148,7 +157,8 @@ export function StudentSchedule() {
 
   // Check if a class conflicts with selected classes
   const hasConflict = (classEntry: ClassEntry): boolean => {
-    return selectedClasses.some(selected => {
+    const allClasses = [...selectedClasses, ...scheduledClasses];
+    return allClasses.some(selected => {
       // Check lecture conflicts
       const lectureDays1 = [classEntry["Lecture Day 1"], classEntry["Lecture Day 2"]].filter(Boolean);
       const lectureDays2 = [selected.class["Lecture Day 1"], selected.class["Lecture Day 2"]].filter(Boolean);
@@ -179,8 +189,32 @@ export function StudentSchedule() {
 
   // Check if a class has the same course code as any selected class
   const hasSameCourseCode = (classEntry: ClassEntry): boolean => {
-    return selectedClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
+    const allClasses = [...selectedClasses, ...scheduledClasses];
+    return allClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
   };
+
+  // Get student's scheduled classes from summer_schedules.json
+  const studentScheduledClasses = useMemo(() => {
+    if (!selectedStudent) return [];
+    
+    const studentScheduleEntries = summerSchedules.filter(
+      entry => entry.student_id === selectedStudent.id
+    );
+    
+    return studentScheduleEntries.map(entry => {
+      const classEntry = classList.find(
+        classItem => classItem["Section Code"] === entry.section_code
+      );
+      
+      if (classEntry) {
+        return {
+          id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
+          class: classEntry
+        };
+      }
+      return null;
+    }).filter(Boolean) as SelectedClass[];
+  }, [selectedStudent, summerSchedules, classList]);
 
   const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses } = useMemo(() => {
     if (!selectedStudent) {
@@ -287,8 +321,32 @@ export function StudentSchedule() {
 
   const handleStudentChange = (student: Student | null) => {
     setSelectedStudent(student);
-    setSelectedClasses([]); // Clear selected classes when changing students
+    setSelectedClasses([]); // Clear manually selected classes
+    setScheduledClasses([]); // Clear scheduled classes
     setAvailability({}); // Clear availability when changing students
+    
+    // Load scheduled classes for the selected student
+    if (student) {
+      const studentScheduleEntries = summerSchedules.filter(
+        entry => entry.student_id === student.id
+      );
+      
+      const scheduled = studentScheduleEntries.map(entry => {
+        const classEntry = classList.find(
+          classItem => classItem["Section Code"] === entry.section_code
+        );
+        
+        if (classEntry) {
+          return {
+            id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
+            class: classEntry
+          };
+        }
+        return null;
+      }).filter(Boolean) as SelectedClass[];
+      
+      setScheduledClasses(scheduled);
+    }
   };
 
   const handleCaptureSchedule = async () => {
@@ -343,6 +401,42 @@ export function StudentSchedule() {
     }
   };
 
+  const handleRemoveScheduledClass = (classId: string) => {
+    setScheduledClasses(prev => prev.filter(scheduled => scheduled.id !== classId));
+  };
+
+  const handleRemoveAllScheduledClasses = () => {
+    setScheduledClasses([]);
+  };
+
+  const handleReset = () => {
+    // Clear manually selected classes
+    setSelectedClasses([]);
+    
+    // Reload the original scheduled classes from summer_schedules.json
+    if (selectedStudent) {
+      const studentScheduleEntries = summerSchedules.filter(
+        entry => entry.student_id === selectedStudent.id
+      );
+      
+      const scheduled = studentScheduleEntries.map(entry => {
+        const classEntry = classList.find(
+          classItem => classItem["Section Code"] === entry.section_code
+        );
+        
+        if (classEntry) {
+          return {
+            id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
+            class: classEntry
+          };
+        }
+        return null;
+      }).filter(Boolean) as SelectedClass[];
+      
+      setScheduledClasses(scheduled);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-6 px-4">
       <div className="max-w-[90rem] mx-auto">
@@ -381,10 +475,21 @@ export function StudentSchedule() {
                   </div>
                   <div className="flex items-center gap-2">
                     <button
+                      onClick={handleReset}
+                      disabled={selectedClasses.length === 0 && scheduledClasses.length === 0}
+                      className={`inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 ${
+                        selectedClasses.length === 0 && scheduledClasses.length === 0
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                          : 'bg-gray-600 text-white hover:bg-gray-700'
+                      }`}
+                    >
+                      Reset
+                    </button>
+                    <button
                       onClick={() => setIsChangeRequestOpen(true)}
-                      disabled={selectedClasses.length === 0}
+                      disabled={selectedClasses.length === 0 && scheduledClasses.length === 0}
                       className={`inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
-                        selectedClasses.length === 0
+                        selectedClasses.length === 0 && scheduledClasses.length === 0
                           ? 'bg-blue-300 cursor-not-allowed'
                           : 'bg-blue-600 hover:bg-blue-700'
                       }`}
@@ -393,24 +498,57 @@ export function StudentSchedule() {
                     </button>
                     <ScheduleScreenshot 
                       onCapture={handleCaptureSchedule} 
-                      disabled={selectedClasses.length === 0}
+                      disabled={selectedClasses.length === 0 && scheduledClasses.length === 0}
                     />
                   </div>
                 </div>
               </div>
               <div className="overflow-y-auto max-h-[400px]" ref={scheduleRef}>
                 <StudentScheduleGrid 
-                  selectedClasses={selectedClasses}
+                  selectedClasses={[...scheduledClasses, ...selectedClasses]}
                   timezone={timezone}
                   onTimezoneChange={() => {}}
                   studentName={selectedStudent.name}
                 />
               </div>
               
-              {/* Selected Classes Summary */}
+              {/* Scheduled Classes Summary */}
+              {scheduledClasses.length > 0 && (
+                <div className="border-t border-gray-200 p-4 bg-blue-50">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-sm font-semibold text-blue-900">Scheduled Classes (Next Term)</h3>
+                    <button
+                      onClick={handleRemoveAllScheduledClasses}
+                      className="text-xs text-blue-600 hover:text-blue-800"
+                    >
+                      Remove All
+                    </button>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {scheduledClasses.map(scheduled => (
+                      <div
+                        key={scheduled.id}
+                        className="flex items-center gap-2 border rounded-md px-3 py-1.5 shadow-sm bg-blue-100 border-blue-300"
+                      >
+                        <span className="text-sm font-medium text-blue-900">
+                          {scheduled.class["Course Name"].trim()} - Section {scheduled.class["Section Code"]}
+                        </span>
+                        <button
+                          onClick={() => handleRemoveScheduledClass(scheduled.id)}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Manually Selected Classes Summary */}
               {selectedClasses.length > 0 && (
                 <div className="border-t border-gray-200 p-4 bg-gray-50">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Selected Classes</h3>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Manually Selected Classes</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedClasses.map(selected => (
                       <div
@@ -481,7 +619,7 @@ export function StudentSchedule() {
             {/* Schedule Change Request Popup */}
             <ScheduleChangeRequest
               student={selectedStudent}
-              selectedClasses={selectedClasses}
+              selectedClasses={[...scheduledClasses, ...selectedClasses]}
               isOpen={isChangeRequestOpen}
               onClose={() => setIsChangeRequestOpen(false)}
             />
