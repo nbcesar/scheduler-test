@@ -425,7 +425,8 @@ export function StudentSchedule() {
       const courseCode = transcriptEntry.course_code;
       const courseStatus = isCourseTakenOrInProgress(courseCode);
       
-      if (courseStatus.taken) {
+      // For passed courses, always show as taken
+      if (courseStatus.taken && courseStatus.status !== 'In Progress') {
         if (availableCourseCodes.has(courseCode)) {
           // Course is available in class list - add to taken courses if not already processed
           if (!takenCoursesMap.has(courseCode)) {
@@ -462,15 +463,59 @@ export function StudentSchedule() {
     const selectedCourseCodes = new Set(allSelectedClasses.map(c => c.class["Course Code"]));
     const selectedClassIds = new Set(allSelectedClasses.map(c => c.id));
 
+    // Process IP classes - only show as taken if they're in the schedule grid
+    studentTranscripts.forEach(transcriptEntry => {
+      const courseCode = transcriptEntry.course_code;
+      const courseStatus = isCourseTakenOrInProgress(courseCode);
+      
+      // For IP classes, only show as taken if they're in the schedule grid
+      if (courseStatus.status === 'In Progress' && selectedCourseCodes.has(courseCode)) {
+        if (availableCourseCodes.has(courseCode)) {
+          // Course is available in class list - add to taken courses if not already processed
+          if (!takenCoursesMap.has(courseCode)) {
+            const representativeClass = classList.find(classEntry => 
+              classEntry["Course Code"] === courseCode
+            );
+            
+            if (representativeClass) {
+              takenCoursesMap.set(courseCode, {
+                class: representativeClass,
+                grade: courseStatus.grade || '',
+                status: courseStatus.status || ''
+              });
+            }
+          }
+        } else {
+          // Course is not in class list - add to transcript-only courses
+          if (!transcriptOnlyCoursesMap.has(courseCode)) {
+            transcriptOnlyCoursesMap.set(courseCode, {
+              courseCode: courseCode,
+              courseName: transcriptEntry.course_name,
+              grade: courseStatus.grade || '',
+              status: courseStatus.status || ''
+            });
+          }
+        }
+      }
+    });
+
     // Process all classes in the class list
     classList.forEach(classEntry => {
       const courseCode = classEntry["Course Code"];
       const classId = `${classEntry["Course Code"]}-${classEntry["Section Code"]}`;
       const courseStatus = isCourseTakenOrInProgress(courseCode);
       
-      // Skip if course is already taken
-      if (courseStatus.taken) {
+      // Skip if course is already passed (but allow IP classes unless they're in the schedule grid)
+      if (courseStatus.taken && courseStatus.status !== 'In Progress') {
         return;
+      }
+      
+      // For IP classes, only skip if they're currently in the schedule grid
+      if (courseStatus.status === 'In Progress') {
+        const isInScheduleGrid = selectedCourseCodes.has(courseCode);
+        if (isInScheduleGrid) {
+          return;
+        }
       }
       
       // Skip if class is not available based on time availability
