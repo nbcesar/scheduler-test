@@ -9,64 +9,73 @@ import { ClassEntry, SelectedClass, Timezone, TranscriptEntry, Student } from '.
 import { TimeAvailability } from '../types/scheduler';
 import classListData from '../constants/class_list.json';
 import transcriptsData from '../constants/transcripts.json';
+import summerSchedulesData from '../constants/summer_schedules.json';
+import studentsData from '../constants/students.json';
 import { StudentTranscript } from '../components/StudentTranscript';
 import html2canvas from 'html2canvas';
 import { ScheduleScreenshot } from '../components/ScheduleScreenshot';
 import { ScheduleChangeRequest } from '../components/ScheduleChangeRequest';
-import summerSchedulesData from '../constants/summer_schedules.json';
 
+// Add type for summer schedule entries
 interface SummerScheduleEntry {
   student_id: string;
   section_code: string;
 }
 
-const summerSchedules = summerSchedulesData as SummerScheduleEntry[];
+// Add type for student entries from students.json
+interface StudentEntry {
+  person_id: string;
+  user_id: string;
+  student_name: string;
+  email: string;
+  coach_name: string;
+  term_status_classification: string;
+  rn: string;
+}
 
 export function StudentSchedule() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<SelectedClass[]>([]);
+  const [scheduledClasses, setScheduledClasses] = useState<SelectedClass[]>([]);
   const [timezone, setTimezone] = useState<Timezone>('Eastern');
   const [availability, setAvailability] = useState<TimeAvailability>({});
   const scheduleRef = useRef<HTMLDivElement>(null);
   const [isChangeRequestOpen, setIsChangeRequestOpen] = useState(false);
-  const [scheduledClasses, setScheduledClasses] = useState<SelectedClass[]>([]);
 
   const classList = classListData as ClassEntry[];
   const transcripts = transcriptsData as TranscriptEntry[];
+  const summerSchedules = summerSchedulesData as SummerScheduleEntry[];
+  const students = studentsData as StudentEntry[];
 
-  // Get unique students from transcripts with validation
-  const students = useMemo(() => {
-    const studentMap = new Map<string, Student>();
-    transcripts.forEach(entry => {
-      // Validate that student_id, student_name, and email are valid strings
-      if (
-        entry.student_id && 
-        typeof entry.student_id === 'string' && 
-        entry.student_id.trim() !== '' &&
-        entry.student_name && 
-        typeof entry.student_name === 'string' && 
-        entry.student_name.trim() !== '' &&
-        entry.email &&
-        typeof entry.email === 'string' &&
-        entry.email.trim() !== ''
-      ) {
-        const studentId = entry.student_id.trim();
-        const studentName = entry.student_name.trim();
-        const studentEmail = entry.email.trim();
-        
-        if (!studentMap.has(studentId)) {
-          studentMap.set(studentId, {
-            id: studentId,
-            name: studentName,
-            email: studentEmail
-          });
-        }
-      }
-    });
-    return Array.from(studentMap.values()).sort((a, b) => a.name.localeCompare(b.name));
-  }, [transcripts]);
+  // Get students from students.json and convert to Student type
+  const studentList = useMemo(() => {
+    return students
+      .filter(student => 
+        student.student_name && 
+        typeof student.student_name === 'string' && 
+        student.student_name.trim() !== '' &&
+        student.email &&
+        typeof student.email === 'string' &&
+        student.email.trim() !== '' &&
+        student.user_id &&
+        typeof student.user_id === 'string' &&
+        student.user_id.trim() !== ''
+      )
+      .map(student => ({
+        id: student.user_id.trim(),
+        name: student.student_name.trim(),
+        email: student.email.trim()
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [students]);
 
-  // Get student's transcript entries
+  // Get student's summer schedule entries using user_id
+  const studentSummerSchedule = useMemo(() => {
+    if (!selectedStudent) return [];
+    return summerSchedules.filter(entry => entry.student_id === selectedStudent.id);
+  }, [selectedStudent, summerSchedules]);
+
+  // Get student's transcript entries using user_id
   const studentTranscripts = useMemo(() => {
     if (!selectedStudent) return [];
     return transcripts.filter(entry => entry.student_id === selectedStudent.id);
@@ -193,29 +202,6 @@ export function StudentSchedule() {
     return allClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
   };
 
-  // Get student's scheduled classes from summer_schedules.json
-  const studentScheduledClasses = useMemo(() => {
-    if (!selectedStudent) return [];
-    
-    const studentScheduleEntries = summerSchedules.filter(
-      entry => entry.student_id === selectedStudent.id
-    );
-    
-    return studentScheduleEntries.map(entry => {
-      const classEntry = classList.find(
-        classItem => classItem["Section Code"] === entry.section_code
-      );
-      
-      if (classEntry) {
-        return {
-          id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
-          class: classEntry
-        };
-      }
-      return null;
-    }).filter(Boolean) as SelectedClass[];
-  }, [selectedStudent, summerSchedules, classList]);
-
   const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses } = useMemo(() => {
     if (!selectedStudent) {
       return { availableClasses: [], conflictingClasses: [], takenClasses: [], transcriptOnlyClasses: [] };
@@ -305,7 +291,7 @@ export function StudentSchedule() {
       takenClasses: Array.from(takenCoursesMap.values()),
       transcriptOnlyClasses: Array.from(transcriptOnlyCoursesMap.values())
     };
-  }, [selectedStudent, classList, studentTranscripts, selectedClasses, availability]);
+  }, [selectedStudent, classList, studentTranscripts, selectedClasses, scheduledClasses, availability]);
 
   const handleSelectClass = (classEntry: ClassEntry) => {
     const newSelectedClass: SelectedClass = {
@@ -319,6 +305,14 @@ export function StudentSchedule() {
     setSelectedClasses(prev => prev.filter(selected => selected.id !== classId));
   };
 
+  const handleRemoveScheduledClass = (classId: string) => {
+    setScheduledClasses(prev => prev.filter(scheduled => scheduled.id !== classId));
+  };
+
+  const handleRemoveAllScheduledClasses = () => {
+    setScheduledClasses([]);
+  };
+
   const handleStudentChange = (student: Student | null) => {
     setSelectedStudent(student);
     setSelectedClasses([]); // Clear manually selected classes
@@ -329,6 +323,34 @@ export function StudentSchedule() {
     if (student) {
       const studentScheduleEntries = summerSchedules.filter(
         entry => entry.student_id === student.id
+      );
+      
+      const scheduled = studentScheduleEntries.map(entry => {
+        const classEntry = classList.find(
+          classItem => classItem["Section Code"] === entry.section_code
+        );
+        
+        if (classEntry) {
+          return {
+            id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
+            class: classEntry
+          };
+        }
+        return null;
+      }).filter(Boolean) as SelectedClass[];
+      
+      setScheduledClasses(scheduled);
+    }
+  };
+
+  const handleReset = () => {
+    // Clear manually selected classes
+    setSelectedClasses([]);
+    
+    // Reload the original scheduled classes from summer_schedules.json
+    if (selectedStudent) {
+      const studentScheduleEntries = summerSchedules.filter(
+        entry => entry.student_id === selectedStudent.id
       );
       
       const scheduled = studentScheduleEntries.map(entry => {
@@ -401,42 +423,6 @@ export function StudentSchedule() {
     }
   };
 
-  const handleRemoveScheduledClass = (classId: string) => {
-    setScheduledClasses(prev => prev.filter(scheduled => scheduled.id !== classId));
-  };
-
-  const handleRemoveAllScheduledClasses = () => {
-    setScheduledClasses([]);
-  };
-
-  const handleReset = () => {
-    // Clear manually selected classes
-    setSelectedClasses([]);
-    
-    // Reload the original scheduled classes from summer_schedules.json
-    if (selectedStudent) {
-      const studentScheduleEntries = summerSchedules.filter(
-        entry => entry.student_id === selectedStudent.id
-      );
-      
-      const scheduled = studentScheduleEntries.map(entry => {
-        const classEntry = classList.find(
-          classItem => classItem["Section Code"] === entry.section_code
-        );
-        
-        if (classEntry) {
-          return {
-            id: `${classEntry["Course Code"]}-${classEntry["Section Code"]}`,
-            class: classEntry
-          };
-        }
-        return null;
-      }).filter(Boolean) as SelectedClass[];
-      
-      setScheduledClasses(scheduled);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 py-6 px-4">
       <div className="max-w-[90rem] mx-auto">
@@ -456,7 +442,7 @@ export function StudentSchedule() {
         {/* Always show the student selector */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
           <StudentSelector
-            students={students}
+            students={studentList}
             selectedStudent={selectedStudent}
             onStudentChange={handleStudentChange}
             timezone={timezone}
