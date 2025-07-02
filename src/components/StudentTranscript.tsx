@@ -85,7 +85,7 @@ export function StudentTranscript({ transcriptEntries }: StudentTranscriptProps)
             <div className="space-y-2">
               {entries.map((entry) => {
                 const status = entry.grade === 'IP' ? 'In Progress' : 
-                             ['A', 'B', 'C'].includes(entry.grade) ? 'Passed' : 'Failed';
+                             ['A', 'B', 'C', 'CR'].includes(entry.grade) ? 'Passed' : 'Failed';
                 
                 return (
                   <div

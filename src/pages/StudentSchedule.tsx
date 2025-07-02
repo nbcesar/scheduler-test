@@ -197,7 +197,7 @@ export function StudentSchedule() {
     const courseEntry = studentTranscripts.find(entry => entry.course_code === courseCode);
     if (!courseEntry) return { taken: false };
     
-    const passingGrades = ['A', 'B', 'C'];
+    const passingGrades = ['A', 'B', 'C', 'CR'];
     const isPassed = passingGrades.includes(courseEntry.grade);
     const isInProgress = courseEntry.grade === 'IP';
     
@@ -301,7 +301,7 @@ export function StudentSchedule() {
       const courseEntry = studentTranscripts.find(entry => entry.course_code === courseCode);
       if (!courseEntry) return { taken: false };
       
-      const passingGrades = ['A', 'B', 'C'];
+      const passingGrades = ['A', 'B', 'C', 'CR'];
       const isPassed = passingGrades.includes(courseEntry.grade);
       const isInProgress = courseEntry.grade === 'IP';
       

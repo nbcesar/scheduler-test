@@ -23,6 +23,8 @@ export interface TranscriptEntry {
   course_name: string;
   grade: string;
   term: string;
+  cumulative_credits_completed: number;
+  cumulative_credits_attempted: number;
 }
 
 export interface Student {
