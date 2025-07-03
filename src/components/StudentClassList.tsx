@@ -10,6 +10,7 @@ interface StudentClassListProps {
   timezone: Timezone;
   onSelectClass: (classEntry: ClassEntry) => void;
   showOnlyFilters?: boolean;
+  hasPassedPrerequisite?: (prerequisiteCode: string) => boolean;
 }
 
 export function StudentClassList({ 
@@ -17,7 +18,8 @@ export function StudentClassList({
   conflictingClasses, 
   timezone,
   onSelectClass,
-  showOnlyFilters = false
+  showOnlyFilters = false,
+  hasPassedPrerequisite
 }: StudentClassListProps) {
   const [showConflicting, setShowConflicting] = useState(false);
 
@@ -54,6 +56,13 @@ export function StudentClassList({
   };
 
   const getConflictReason = (classEntry: ClassEntry) => {
+    // Check for prerequisite conflicts first
+    if (classEntry["Prereq"] && classEntry["Prereq"].trim() !== '') {
+      if (!hasPassedPrerequisite || !hasPassedPrerequisite(classEntry["Prereq"])) {
+        return `Missing prerequisite: ${classEntry["Prereq"]}`;
+      }
+    }
+    
     const hasSameCourseInAvailable = availableClasses.some(c => c["Course Code"] === classEntry["Course Code"]);
     
     if (!hasSameCourseInAvailable) {
@@ -90,6 +99,7 @@ export function StudentClassList({
   const ClassCard = ({ classEntry, isConflicting = false }: { classEntry: ClassEntry; isConflicting?: boolean }) => {
     const conflictReason = isConflicting ? getConflictReason(classEntry) : '';
     const isSameCourseConflict = conflictReason === 'Same course already selected';
+    const isPrerequisiteConflict = conflictReason.startsWith('Missing prerequisite:');
     
     return (
       <div className={`border rounded-lg p-3 ${isConflicting ? 'bg-red-50 border-red-200' : 'bg-white border-gray-200 hover:border-purple-300'} transition-colors`}>
@@ -105,6 +115,8 @@ export function StudentClassList({
               {isConflicting && (
                 isSameCourseConflict ? (
                   <BookOpen className="w-3 h-3 text-orange-500" />
+                ) : isPrerequisiteConflict ? (
+                  <Archive className="w-3 h-3 text-red-500" />
                 ) : (
                   <AlertTriangle className="w-3 h-3 text-red-500" />
                 )
@@ -119,6 +131,12 @@ export function StudentClassList({
               {classEntry["DS Day"] && classEntry["DS Time"] && (
                 <div>
                   <span className="font-medium">Discussion:</span> {classEntry["DS Day"]} {formatTime(classEntry["DS Time"])}
+                </div>
+              )}
+              
+              {isConflicting && conflictReason && (
+                <div className="text-red-600 font-medium">
+                  {conflictReason}
                 </div>
               )}
             </div>

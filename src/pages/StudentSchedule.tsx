@@ -291,9 +291,9 @@ export function StudentSchedule() {
     return allClasses.some(selected => selected.class["Course Code"] === classEntry["Course Code"]);
   };
 
-  const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses } = useMemo(() => {
+  const { availableClasses, conflictingClasses, takenClasses, transcriptOnlyClasses, hasPassedPrerequisite } = useMemo(() => {
     if (!selectedStudent) {
-      return { availableClasses: [], conflictingClasses: [], takenClasses: [], transcriptOnlyClasses: [] };
+      return { availableClasses: [], conflictingClasses: [], takenClasses: [], transcriptOnlyClasses: [], hasPassedPrerequisite: () => false };
     }
 
     // Helper functions defined inside useMemo to avoid dependency issues
@@ -310,6 +310,25 @@ export function StudentSchedule() {
         grade: courseEntry.grade,
         status: isInProgress ? 'In Progress' : isPassed ? 'Passed' : 'Failed'
       };
+    };
+
+    // Check if student has passed a prerequisite course
+    const hasPassedPrerequisite = (prerequisiteCode: string): boolean => {
+      const prerequisiteEntry = studentTranscripts.find(entry => entry.course_code === prerequisiteCode);
+      if (!prerequisiteEntry) return false;
+      
+      const passingGrades = ['A', 'B', 'C', 'CR'];
+      return passingGrades.includes(prerequisiteEntry.grade);
+    };
+
+    // Check if student meets prerequisites for a class
+    const meetsPrerequisites = (classEntry: ClassEntry): boolean => {
+      const prerequisite = classEntry["Prereq"];
+      if (!prerequisite || prerequisite.trim() === '') {
+        return true; // No prerequisite required
+      }
+      
+      return hasPassedPrerequisite(prerequisite);
     };
 
     const isClassTimeAvailable = (classEntry: ClassEntry): boolean => {
@@ -528,6 +547,12 @@ export function StudentSchedule() {
         return;
       }
       
+      // Skip if student doesn't meet prerequisites
+      if (!meetsPrerequisites(classEntry)) {
+        conflicting.push(classEntry);
+        return;
+      }
+      
       // Check for conflicts with selected classes
       if (hasConflict(classEntry)) {
         conflicting.push(classEntry);
@@ -559,7 +584,8 @@ export function StudentSchedule() {
       availableClasses: filteredAvailableClasses,
       conflictingClasses: conflicting,
       takenClasses: Array.from(takenCoursesMap.values()),
-      transcriptOnlyClasses: Array.from(transcriptOnlyCoursesMap.values())
+      transcriptOnlyClasses: Array.from(transcriptOnlyCoursesMap.values()),
+      hasPassedPrerequisite
     };
   }, [selectedStudent, classList, studentTranscripts, selectedClasses, scheduledClasses, availability, classSearchTerm]);
 
@@ -965,6 +991,7 @@ export function StudentSchedule() {
                     timezone={timezone}
                     onSelectClass={handleSelectClass}
                     showOnlyFilters={false}
+                    hasPassedPrerequisite={hasPassedPrerequisite}
                   />
                 </div>
               </div>
